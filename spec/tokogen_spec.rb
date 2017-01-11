@@ -17,6 +17,12 @@ describe Tokogen, '.score' do
   it 'generates 32 length token without arguments' do
     expect(Tokogen.token.size).to eq 32
   end
+
+  it 'generates different tokens' do
+    one = Tokogen.token
+    two = Tokogen.token
+    expect(one).not_to eq two
+  end
 end
 
 describe Tokogen, '.default_generator' do
