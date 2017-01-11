@@ -36,7 +36,6 @@ describe Tokogen, '.default_generator' do
   end
 end
 
-
 describe Tokogen, '.generator' do
   it 'build a generator' do
     expect(Tokogen.generator).to be_kind_of Tokogen::Generator

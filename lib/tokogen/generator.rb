@@ -14,7 +14,7 @@ module Tokogen
       token_bits_amount = length * bits_per_char
       bytes_to_read = full_bytes_in_bits(token_bits_amount)
       bytes = random_bytes(bytes_to_read)
-      bits = bytes.unpack("b*")[0]
+      bits = bytes.unpack('b*')[0]
       # It's possible we've read a couple exta bits of randomness,
       # since randomness is rounded to bytes.
       # Here we only take first `length` of bit that we need.
@@ -42,7 +42,7 @@ module Tokogen
 
     private
 
-    def bit_string_split(bits, bits_per_char, &block)
+    def bit_string_split(bits, bits_per_char, &block) # rubocop:disable Metrics/MethodLength
       top = max_char_index
       curry = 0
       last_curry = 0
