@@ -9,6 +9,10 @@ module Tokogen
   end
 
   def self.default_generator
-    Generator.new(randomness_source: SecureRandom)
+    generator # calling explicitly without arguments
+  end
+
+  def self.generator(randomness_source: SecureRandom, **options)
+    Generator.new(randomness_source: randomness_source, **options)
   end
 end
