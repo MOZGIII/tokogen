@@ -6,7 +6,13 @@ describe Tokogen do
     expect(Tokogen::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  it 'generates token of the correct length' do
+    (0..1024).each do |length|
+      expect(Tokogen.token(length).size).to eq length
+    end
+  end
+
+  it 'generates 32 length token without arguments' do
+    expect(Tokogen.token.size).to eq 32
   end
 end
