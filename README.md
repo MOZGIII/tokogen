@@ -1,6 +1,6 @@
 # Tokogen
 
-A ruby gem that allows you to generate customizeable random tokens.
+A ruby gem that allows you to generate customizable random tokens.
 
 ## Installation
 

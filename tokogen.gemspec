@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['MOZGIII']
   spec.email         = ['mike-n@narod.ru']
 
-  spec.summary       = 'Generates random tokens with fixed length and customizeable alphabet.'
-  spec.description   = 'A ruby gem that allows you to generate customizeable random tokens.'
+  spec.summary       = 'Generates random tokens with fixed length and customizable alphabet.'
+  spec.description   = 'A ruby gem that allows you to generate customizable random tokens.'
   spec.homepage      = 'https://github.com/MOZGIII/tokogen'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
