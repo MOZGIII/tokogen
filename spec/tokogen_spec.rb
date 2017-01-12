@@ -34,6 +34,11 @@ describe Tokogen, '.default_generator' do
     generator = Tokogen.default_generator
     expect(generator.randomness_source).to eq SecureRandom
   end
+
+  it 'build a generator with BASE62 alphabet' do
+    generator = Tokogen.default_generator
+    expect(generator.alphabet).to eq Tokogen::Alphabet::BASE62
+  end
 end
 
 describe Tokogen, '.generator' do
@@ -55,5 +60,17 @@ describe Tokogen, '.generator' do
     one = Tokogen.generator
     two = Tokogen.generator
     expect(one).to_not eq two
+  end
+
+  it 'works with all alpabets' do
+    alphabets = [
+      Tokogen::Alphabet::BASE62,
+      Tokogen::Alphabet::BASE58,
+      Tokogen::Alphabet::BASE64
+    ]
+
+    alphabets.each do |alphabet|
+      expect { Tokogen.generator(alphabet: alphabet).generate(32) }.to_not raise_error
+    end
   end
 end

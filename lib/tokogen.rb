@@ -2,6 +2,7 @@
 require 'securerandom'
 require 'tokogen/version'
 require 'tokogen/generator'
+require 'tokogen/alphabet'
 
 module Tokogen
   def self.token(length = 32)
@@ -12,7 +13,7 @@ module Tokogen
     generator # calling explicitly without arguments
   end
 
-  def self.generator(randomness_source: SecureRandom, **options)
-    Generator.new(randomness_source: randomness_source, **options)
+  def self.generator(randomness_source: SecureRandom, alphabet: Alphabet::BASE62)
+    Generator.new(randomness_source: randomness_source, alphabet: Alphabet::BASE62)
   end
 end

@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 module Tokogen
   class Generator
-    DEFAULT_ALPHABET = (('A'..'Z').to_a + ('a'..'z').to_a + ('0'..'9').to_a).join.freeze
+    attr_reader :randomness_source, :alphabet
 
-    attr_reader :randomness_source
-
-    def initialize(randomness_source:, alphabet: DEFAULT_ALPHABET)
+    def initialize(randomness_source:, alphabet:)
       @randomness_source = randomness_source
       @alphabet = alphabet
     end
