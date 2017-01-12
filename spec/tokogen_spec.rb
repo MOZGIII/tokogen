@@ -71,7 +71,7 @@ describe Tokogen, '.generator' do
     ]
 
     alphabets.each do |alphabet|
-      expect { Tokogen.generator(alphabet: alphabet).generate(32) }.to_not raise_error
+      expect { Tokogen.generator(alphabet: alphabet).generate(32).size }.to eq 32
     end
   end
 end
