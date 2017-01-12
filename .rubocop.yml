@@ -5,6 +5,7 @@ AllCops:
     - '**/*.gemspec'
     - '**/Gemfile'
     - '**/Rakefile'
+    - '**/Guardfile'
     - '**/*.rake'
 Rails:
   Enabled: false
