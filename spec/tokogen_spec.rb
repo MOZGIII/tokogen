@@ -66,7 +66,8 @@ describe Tokogen, '.generator' do
     alphabets = [
       Tokogen::Alphabet::BASE62,
       Tokogen::Alphabet::BASE58,
-      Tokogen::Alphabet::BASE64
+      Tokogen::Alphabet::BASE64,
+      Tokogen::Alphabet::BASE85
     ]
 
     alphabets.each do |alphabet|
