@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+require 'tokogen'
+args = []
+args << ARGV[0].to_i if ARGV[0]
+puts Tokogen.token(*args)
