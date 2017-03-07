@@ -76,4 +76,12 @@ describe Tokogen, '.generator' do
       expect(Tokogen.generator(alphabet: alphabet).generate(32).size).to eq 32
     end
   end
+
+  it 'allows setting an alphabet that is different than default' do
+    alphabet = Tokogen::Alphabet::BASE2
+    expect(Tokogen.generator(alphabet: alphabet).alphabet).to eq alphabet
+
+    alphabet = Tokogen::Alphabet::BASE3
+    expect(Tokogen.generator(alphabet: alphabet).alphabet).to eq alphabet
+  end
 end
