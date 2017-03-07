@@ -14,6 +14,6 @@ module Tokogen
   end
 
   def self.generator(randomness_source: SecureRandom, alphabet: Alphabet::BASE62)
-    Generator.new(randomness_source: randomness_source, alphabet: Alphabet::BASE62)
+    Generator.new(randomness_source: randomness_source, alphabet: alphabet)
   end
 end
