@@ -37,3 +37,6 @@ Style/SpaceInLambdaLiteral:
   Enabled: false
 Bundler/OrderedGems:
   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
