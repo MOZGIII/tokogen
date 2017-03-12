@@ -26,7 +26,16 @@ module Tokogen
       indexes = combiner.each.take(length)
       raise AssertionFail, 'Invalid length' if indexes.size != length
       indexes.map do |index|
-        # We accumulates indexes as a set of indexes
+        # We split out random data into chunks of bits with fixed length.
+        # Therefore it's possible to have an index value that is larger than
+        # an alphabet size.
+        # In this case we'd resolve to nil, so we're just using modulo of the
+        # alphabet size. This will probably ruin the distribution that
+        # the randromness source provides, but it will at least work.
+        # If you don't want this behavior, just ensure you're using an alphabet
+        # with an even size - then there will always be a bijection between
+        # the generated indicies and the alphabet and the described issue
+        # will never occur.
         alphabet_char(index % @alphabet_size)
       end.join
     end
