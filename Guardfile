@@ -12,8 +12,4 @@ guard :rspec, cmd: 'bundle exec rspec' do
   # Ruby files
   ruby = dsl.ruby
   dsl.watch_spec_files_for(ruby.lib_files)
-
-  # Tokogen only has spec for mail module so far
-  # Use it cause it's better than nothing.
-  watch(%r{^lib/(.+)\.rb$}) { 'spec/tokogen_spec.rb' }
 end
