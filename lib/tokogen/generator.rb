@@ -1,65 +1,48 @@
 # frozen_string_literal: true
 module Tokogen
   class Generator
+    class AssertionFail < StandardError; end
+
     attr_reader :randomness_source, :alphabet
 
     def initialize(randomness_source:, alphabet:)
       @randomness_source = randomness_source
       @alphabet = alphabet
+
+      @alphabet_size = @alphabet.size
+      @max_char_index = @alphabet_size - 1
+      @bits_per_char = @max_char_index.bit_length
     end
 
-    def generate(length)
-      token_bits_amount = length * bits_per_char
+    def generate(length) # rubocop:disable Metrics/AbcSize
+      token_bits_amount = length * @bits_per_char
       bytes_to_read = full_bytes_in_bits(token_bits_amount)
       bytes = random_bytes(bytes_to_read)
-      bits = bytes.unpack('b*')[0]
+      splitter = BitSplitter.new(bytes.each_byte)
+      combiner = BitCombiner.new(splitter.each, @bits_per_char)
       # It's possible we've read a couple exta bits of randomness,
       # since randomness is rounded to bytes.
       # Here we only take first `length` of bit that we need.
-      bit_string_split(bits, bits_per_char)
-        .take(length)
-        .map { |index| alphabet_char(index) }
-        .join
+      indexes = combiner.each.take(length)
+      raise AssertionFail, 'Invalid length' if indexes.size != length
+      indexes.map do |index|
+        # We accumulates indexes as a set of indexes
+        alphabet_char(index % @alphabet_size)
+      end.join
     end
 
     def random_bytes(size)
       @randomness_source.random_bytes(size)
     end
 
-    def max_char_index
-      @alphabet.size - 1
-    end
-
-    def bits_per_char
-      max_char_index.bit_length
-    end
-
-    def full_bytes_in_bits(bits)
-      (bits + 7) >> 3
+    def alphabet_char(index)
+      @alphabet[index]
     end
 
     private
 
-    def bit_string_split(bits, bits_per_char, &block) # rubocop:disable Metrics/MethodLength
-      top = max_char_index
-      curry = 0
-      last_curry = 0
-      bits.each_char.each_slice(bits_per_char).map do |binary_ord|
-        val = binary_ord.join.to_i(2) + curry
-        last_curry = curry
-        if val <= top
-          current = val
-          curry = 0
-        else
-          current = top
-          curry = val % top
-        end
-        current
-      end.each(&block)
-    end
-
-    def alphabet_char(index)
-      @alphabet[index]
+    def full_bytes_in_bits(bits)
+      (bits + 7) >> 3
     end
   end
 end
