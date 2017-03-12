@@ -2,6 +2,7 @@
 require 'securerandom'
 require 'tokogen/version'
 require 'tokogen/bit_splitter'
+require 'tokogen/bit_combiner'
 require 'tokogen/generator'
 require 'tokogen/alphabet'
 
