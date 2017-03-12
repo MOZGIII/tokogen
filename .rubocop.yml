@@ -26,11 +26,11 @@ Style/IndentHash:
 Style/FirstParameterIndentation:
   EnforcedStyle: consistent
 Style/CaseIndentation:
-  IndentWhenRelativeTo: end
+  EnforcedStyle: end
 Style/Alias:
   EnforcedStyle: prefer_alias_method
 Lint/EndAlignment:
-  AlignWith: variable
+  EnforcedStyleAlignWith: variable
 Style/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 Style/SpaceInLambdaLiteral:
