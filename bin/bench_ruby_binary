@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+require 'benchmark'
+
+TIMES = 500_000
+
+puts '# Sequential'
+puts
+
+Benchmark.bmbm(12) do |b|
+  b.report('(1 << x) - 1') { TIMES.times { |x| (1 << x) - 1 } }
+  b.report('~(-1 << x)')   { TIMES.times { |x| ~(-1 << x)   } }
+end
+
+puts
+
+puts '# Random'
+puts
+
+top = 1 << 32
+numbers = Array.new(TIMES) { Random::DEFAULT.rand(top) }
+
+Benchmark.bmbm(12) do |b|
+  b.report('(1 << x) - 1') { numbers.each { |x| (1 << x) - 1 } }
+  b.report('~(-1 << x)')   { numbers.each { |x| ~(-1 << x)   } }
+end

@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+require 'benchmark'
+
+TIMES = 100_000_000
+
+puts '# Sequential'
+puts
+
+Benchmark.bmbm(12) do |b|
+  b.report('x <= 255')          { TIMES.times { |x| x <= 255          } }
+  b.report('x < 256')           { TIMES.times { |x| x < 256           } }
+  b.report('x.bit_length <= 8') { TIMES.times { |x| x.bit_length <= 8 } }
+end
+
+puts
+
+puts '# Random'
+puts
+
+top = 1 << 32
+numbers = Array.new(TIMES) { Random::DEFAULT.rand(top) }
+
+Benchmark.bmbm(12) do |b|
+  b.report('x <= 255')          { numbers.each { |x| x <= 255          } }
+  b.report('x < 256')           { numbers.each { |x| x < 256           } }
+  b.report('x.bit_length <= 8') { numbers.each { |x| x.bit_length <= 8 } }
+end
