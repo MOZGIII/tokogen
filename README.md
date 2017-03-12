@@ -1,5 +1,6 @@
 # Tokogen
 [![Build Status](https://travis-ci.org/MOZGIII/tokogen.svg?branch=master)](https://travis-ci.org/MOZGIII/tokogen)
+[![Gem Version](https://badge.fury.io/rb/tokogen.svg)](https://badge.fury.io/rb/tokogen)
 
 A ruby gem that allows you to generate customizable random tokens.
 
