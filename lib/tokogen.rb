@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require 'securerandom'
 require 'tokogen/version'
+require 'tokogen/bit_splitter'
 require 'tokogen/generator'
 require 'tokogen/alphabet'
 
