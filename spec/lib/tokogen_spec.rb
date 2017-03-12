@@ -7,7 +7,7 @@ describe Tokogen do
   end
 end
 
-describe Tokogen, '.score' do
+describe Tokogen, '.token' do
   it 'generates token of the correct length' do
     (0..1024).each do |length|
       expect(Tokogen.token(length).size).to eq length
