@@ -2,13 +2,11 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   TargetRubyVersion: 2.3
   Include:
-    - '**/*.gemspec'
-    - '**/Gemfile'
-    - '**/Rakefile'
-    - '**/Guardfile'
-    - '**/*.rake'
-Rails:
-  Enabled: false
+    - "**/*.gemspec"
+    - "**/Gemfile"
+    - "**/Rakefile"
+    - "**/Guardfile"
+    - "**/*.rake"
 Metrics/LineLength:
   Enabled: false
 Documentation:
@@ -19,24 +17,28 @@ Style/ClassCheck:
   Enabled: false
 Style/SignalException:
   Enabled: false
-Style/IndentArray:
-  EnforcedStyle: consistent
-Style/IndentHash:
-  EnforcedStyle: consistent
-Style/FirstParameterIndentation:
-  EnforcedStyle: consistent
-Style/CaseIndentation:
-  EnforcedStyle: end
 Style/Alias:
   EnforcedStyle: prefer_alias_method
-Lint/EndAlignment:
+Layout/CaseIndentation:
+  EnforcedStyle: end
+Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
-Style/MultilineMethodCallIndentation:
+Layout/IndentFirstArgument:
+  EnforcedStyle: consistent
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+Layout/IndentFirstHashElement:
+  EnforcedStyle: consistent
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
-Style/SpaceInLambdaLiteral:
+Layout/SpaceInLambdaLiteral:
   Enabled: false
 Bundler/OrderedGems:
   Enabled: false
 Metrics/BlockLength:
   Exclude:
-    - 'spec/**/*.rb'
+    - "spec/**/*.rb"
+Lint/Void:
+  Exclude:
+    - "bin/bench_ruby_comparisons"
+    - "bin/bench_ruby_binary"
