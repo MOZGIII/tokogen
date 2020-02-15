@@ -7,9 +7,9 @@ AllCops:
     - "**/Rakefile"
     - "**/Guardfile"
     - "**/*.rake"
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
-Documentation:
+Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -23,11 +23,11 @@ Layout/CaseIndentation:
   EnforcedStyle: end
 Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
-Layout/IndentFirstArgument:
+Layout/FirstArgumentIndentation:
   EnforcedStyle: consistent
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
